@@ -1,3 +1,4 @@
+from dataclasses import replace
 import random
 from typing import Tuple
 
@@ -46,7 +47,18 @@ def attack_hits(attacker: Character, defender: Character) -> bool:
     return hit_rate(attacker=attacker, defender=defender) > roll
 
 
-def attack(attacker: Character, defender: Character):
+def attack(attacker: Character, defender: Character) -> Tuple[Character, Character]:
+    """Run one attack, checking for whether it hits first.
+
+    Args:
+        attacker: The character making the attack.
+        defener: The character being attacked.
+
+    Returns:
+        2-tuple of the updated attacker and defender, in that order.
+    """
     if attack_hits(attacker=attacker, defender=defender):  # TODO critical hits
         attack_power = attacker.inventory[0].might + attacker.pwr - defender.dfn  # TODO res
-        defender.cur_hp = min(attack_power - defender.dfn, 0)
+        new_defender_hp = min(attack_power - defender.dfn, 0)
+        # TODO durability
+        return (attacker, replace(defender, cur_hp=new_defender_hp))

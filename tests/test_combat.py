@@ -1,15 +1,12 @@
-import random
-
 import pytest
 
-from engine.combat import attack, combat
+import engine.combat
 from engine.factory import iron_sword
 from engine.types import Character, Weapon
 
 
-@pytest.fixture
-def rng():
-    random.seed(1)
+def always_hit(attacker: Character, defender: Character) -> bool:
+    return True
 
 
 @pytest.fixture
@@ -48,6 +45,7 @@ def axe_unit():
     )
 
 
-def test_attack(sword_unit, axe_unit, rng):
-    attack(attacker=sword_unit, defender=axe_unit)
+def test_attack(sword_unit, axe_unit, monkeypatch):
+    monkeypatch.setattr(engine.combat, "attack_hits", always_hit)
+    sword_unit, axe_unit = engine.combat.attack(attacker=sword_unit, defender=axe_unit)
     assert axe_unit.cur_hp < axe_unit.max_hp
