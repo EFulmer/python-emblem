@@ -21,6 +21,14 @@ class Character:
 
     skills: list
 
+    @property
+    def avoid(self):
+        return self.spd * 2 + self.lck
+
+    @property
+    def innate_hit(self):
+        return self.skl * 2 + self.lck // 2
+
 
 @dataclass
 class Weapon:
@@ -28,7 +36,10 @@ class Weapon:
     # TODO weapon type
 
     might: int
+    max_durability: int
     hit: int
     crit: int
     weight: int
     rng: tuple
+
+    cur_durability: int

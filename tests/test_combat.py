@@ -1,8 +1,15 @@
+import random
+
 import pytest
 
-from engine.combat import combat
+from engine.combat import attack, combat
 from engine.factory import iron_sword
 from engine.types import Character, Weapon
+
+
+@pytest.fixture
+def rng():
+    random.seed(1)
 
 
 @pytest.fixture
@@ -41,7 +48,6 @@ def axe_unit():
     )
 
 
-def test_combat(sword_unit, axe_unit):
-    # TODO force a hit
-    combat(attacker=sword_unit, defender=axe_unit)
-    assert sword_unit.cur_hp < sword_unit.max_hp
+def test_attack(sword_unit, axe_unit, rng):
+    attack(attacker=sword_unit, defender=axe_unit)
+    assert axe_unit.cur_hp < axe_unit.max_hp

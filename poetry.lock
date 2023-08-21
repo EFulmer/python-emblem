@@ -185,6 +185,20 @@ test = ["pytest (<7.1)", "pytest-asyncio", "testpath"]
 test_extra = ["curio", "matplotlib (!=3.2.0)", "nbformat", "numpy (>=1.21)", "pandas", "pytest (<7.1)", "pytest-asyncio", "testpath", "trio"]
 
 [[package]]
+name = "isort"
+version = "5.12.0"
+description = "A Python utility / library to sort Python imports."
+category = "dev"
+optional = false
+python-versions = ">=3.8.0"
+
+[package.extras]
+colors = ["colorama (>=0.4.3)"]
+pipfile-deprecated-finder = ["pip-shims (>=0.5.2)", "pipreqs", "requirementslib"]
+plugins = ["setuptools"]
+requirements-deprecated-finder = ["pip-api", "pipreqs"]
+
+[[package]]
 name = "jedi"
 version = "0.19.0"
 description = "An autocompletion tool for Python that can be used for text editors."
@@ -470,7 +484,7 @@ python-versions = "*"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "ba4e35cddbffa0c807a8e73647fcc89c5c6dc04d3c2105192fb04a6a314b710a"
+content-hash = "c491c9b2aa410a9ce3a70789507b7f06883a76621116c2cd2bc450e07a5ed4ac"
 
 [metadata.files]
 appnope = [
@@ -598,6 +612,10 @@ ipdb = [
 ipython = [
     {file = "ipython-8.14.0-py3-none-any.whl", hash = "sha256:248aca623f5c99a6635bc3857677b7320b9b8039f99f070ee0d20a5ca5a8e6bf"},
     {file = "ipython-8.14.0.tar.gz", hash = "sha256:1d197b907b6ba441b692c48cf2a3a2de280dc0ac91a3405b39349a50272ca0a1"},
+]
+isort = [
+    {file = "isort-5.12.0-py3-none-any.whl", hash = "sha256:f84c2818376e66cf843d497486ea8fed8700b340f308f076c6fb1229dff318b6"},
+    {file = "isort-5.12.0.tar.gz", hash = "sha256:8bef7dde241278824a6d83f44a544709b065191b95b6e50894bdc722fcba0504"},
 ]
 jedi = [
     {file = "jedi-0.19.0-py2.py3-none-any.whl", hash = "sha256:cb8ce23fbccff0025e9386b5cf85e892f94c9b822378f8da49970471335ac64e"},
