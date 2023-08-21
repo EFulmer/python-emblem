@@ -1,0 +1,25 @@
+[tool.poetry]
+name = "python-emblem"
+version = "0.0.0"
+description = "GBA-style Fire Emblem game engine written in Python."
+authors = ["Eric Fulmer <2952996+EFulmer@users.noreply.github.com>"]
+readme = "README.md"
+packages = [{include = "python_emblem"}]
+
+
+[tool.poetry.dependencies]
+python = "^3.9"
+
+
+[tool.poetry.group.dev.dependencies]
+black = "^23.7.0"
+flake8 = "^6.1.0"
+ipdb = "^0.13.13"
+ipython = "^8.14.0"
+mypy = "^1.5.1"
+pytest = "^7.4.0"
+pytest-cov = "^4.1.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
