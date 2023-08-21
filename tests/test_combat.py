@@ -1,17 +1,8 @@
 import pytest
 
 from engine.combat import combat
+from engine.factory import iron_sword
 from engine.types import Character, Weapon
-
-
-IRON_SWORD = Weapon(
-    name='Iron Sword',
-    might=5,
-    hit=95,
-    crit=0,
-    weight=5,
-    rng=(1, 1),
-)
 
 
 @pytest.fixture
@@ -27,7 +18,7 @@ def sword_unit():
         res=3,
         lck=5,
         con=7,
-        inventory=[IRON_SWORD],
+        inventory=[iron_sword()],
         skills=[],
     )
 
@@ -45,7 +36,7 @@ def axe_unit():
         res=3,
         lck=5,
         con=7,
-        inventory=[IRON_SWORD],
+        inventory=[iron_sword()],
         skills=[],
     )
 
