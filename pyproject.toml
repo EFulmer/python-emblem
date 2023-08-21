@@ -4,7 +4,7 @@ version = "0.0.0"
 description = "GBA-style Fire Emblem game engine written in Python."
 authors = ["Eric Fulmer <2952996+EFulmer@users.noreply.github.com>"]
 readme = "README.md"
-packages = [{include = "python_emblem"}]
+packages = [{include = "engine"}]
 
 
 [tool.poetry.dependencies]
