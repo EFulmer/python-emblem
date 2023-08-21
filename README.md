@@ -1,2 +1,2 @@
 # python-emblem
-GBA-style Fire Emblem game engine in python
+GBA-style Fire Emblem game engine in Python
