@@ -37,6 +37,11 @@ class Character:
         # need to have and represent a notion of what's "equipped";
         return self.pwr + self.inventory[0].might
 
+    @property
+    def crit(self):
+        # TODO rules relating to class apply here
+        return self.skl // 2 + self.inventory[0].crit
+
     # Evade is used in this way to allow for adding supports later.
     @property
     def evade(self):
