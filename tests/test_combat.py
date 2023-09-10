@@ -12,7 +12,7 @@ def always_hit(attacker: Character, defender: Character) -> bool:
 @pytest.fixture
 def sword_unit():
     return Character(
-        name='Eliwood',
+        name="Eliwood",
         max_hp=18,
         cur_hp=18,
         pwr=5,
@@ -30,7 +30,7 @@ def sword_unit():
 @pytest.fixture
 def axe_unit():
     return Character(
-        name='Hector',
+        name="Hector",
         max_hp=18,
         cur_hp=18,
         pwr=5,
@@ -47,5 +47,7 @@ def axe_unit():
 
 def test_attack(sword_unit, axe_unit, monkeypatch):
     monkeypatch.setattr(engine.combat, "attack_hits", always_hit)
-    sword_unit, axe_unit = engine.combat.attack(attacker=sword_unit, defender=axe_unit)
+    sword_unit, axe_unit = engine.combat.attack(
+        attacker=sword_unit, defender=axe_unit
+    )
     assert axe_unit.cur_hp < axe_unit.max_hp

@@ -4,7 +4,7 @@ from engine.types import Weapon
 
 def iron_sword():
     return Weapon(
-        name='Iron Sword',
+        name="Iron Sword",
         might=5,
         max_durability=46,
         hit=95,
