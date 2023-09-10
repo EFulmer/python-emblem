@@ -4,6 +4,7 @@ from dataclasses import dataclass
 @dataclass(frozen=True)
 class Character:
     name: str
+    # TODO class
 
     max_hp: int
     cur_hp: int
@@ -28,6 +29,11 @@ class Character:
     @property
     def innate_hit(self):
         return self.skl * 2 + self.lck // 2
+
+    # Evade is used in this way to allow for adding supports later.
+    @property
+    def evade(self):
+        return self.lck
 
 
 @dataclass
