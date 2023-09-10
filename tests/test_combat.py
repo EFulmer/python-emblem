@@ -46,8 +46,33 @@ def axe_unit():
 
 
 def test_attack(sword_unit, axe_unit, monkeypatch):
+    """Basic test of attack function:
+    While forcing an attack to always hit, assert that after the
+    attack, the defender's HP is less than it was before combat.
+    """
     monkeypatch.setattr(engine.combat, "attack_hits", always_hit)
     sword_unit, axe_unit = engine.combat.attack(
         attacker=sword_unit, defender=axe_unit
     )
     assert axe_unit.cur_hp < axe_unit.max_hp
+
+
+def test_forecast(sword_unit, axe_unit):
+    """Basic test of combat forecast.
+    Since the actual numbers aren't important here we simply test
+    that all the proper keys exist in the combat forecast.
+
+    This could be made nicer in the future!
+    """
+    KEYS = (
+        "hp",
+        "mt",
+        "hit",
+        "crit",
+    )
+    cs1, cs2 = engine.combat.forecast(sword_unit, axe_unit)
+    for key in KEYS:
+        assert key in cs1
+        assert isinstance(cs1[key], int)
+        assert key in cs2
+        assert isinstance(cs2[key], int)

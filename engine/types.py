@@ -30,6 +30,13 @@ class Character:
     def innate_hit(self):
         return self.skl * 2 + self.lck // 2
 
+    @property
+    def base_power(self):
+        # TODO some rules that will have to be implemented
+        # WRT inventory:
+        # need to have and represent a notion of what's "equipped";
+        return self.pwr + self.inventory[0].might
+
     # Evade is used in this way to allow for adding supports later.
     @property
     def evade(self):
