@@ -47,7 +47,7 @@ def attack(
         return (attacker, defender)
 
 
-def combat_forecast(c1: Character, c2: Character) -> Tuple[Dict, Dict]:
+def forecast(c1: Character, c2: Character) -> Tuple[Dict, Dict]:
     """Return a combat forecast summarizing how c1 and c2 fare against
     each other.
 
