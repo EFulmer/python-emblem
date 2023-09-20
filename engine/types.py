@@ -22,6 +22,18 @@ class Character:
 
     skills: list
 
+    def __post_init__(self):
+        if self.cur_hp > self.max_hp:
+            raise ValueError(
+                f"Current HP cannot exceed max HP (got {self.cur_hp})"
+            )
+        if self.cur_hp < 0:
+            raise ValueError(f"Current HP cannot be less than zero")
+        nonnegative_stats = {'pwr', 'skl', 'spd', 'dfn', 'res', 'lck', 'con'}
+        for s in nonnegative_stats:
+            if getattr(self, s) < 0:
+                raise ValueError(f"{s} must be >= 0")
+
     @property
     def avoid(self):
         return self.spd * 2 + self.lck

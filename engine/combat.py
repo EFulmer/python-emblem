@@ -80,7 +80,6 @@ def forecast_one(c1: Character, c2: Character) -> Dict:
     # Checking that each character can attack.
     # This will need to become more elegant when I add e.g. range.
     if c1.inventory:
-        # TODO character base power function
         # TODO def/res split
         c1_summary["mt"] = c1.base_power - c2.dfn
         c1_summary["hit"] = hit_rate(attacker=c1, defender=c2)
