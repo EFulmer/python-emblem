@@ -91,19 +91,26 @@ def forecast_one(c1: Character, c2: Character) -> Dict:
 
     return c1_summary
 
+def combat(attacker: Character, defender: Character) -> (Character, Character):
+    """Run a round of combat where attacker initiates and defender
+    counters, if possible.
+    """
+    # TODO determine whether countering is possible. Range and inventory will be needed.
+    # TODO determine doubling
+    attacker, defender = attack(attacker=attacker, defender=defender)
+    defender, attacker = attack(attacker=defender, defender=attacker)
+    return attacker, defender
 
-def arena(c1: Character, c2: Character):
+
+def arena(attacker: Character, defender: Character):
     """Do 'arena' style combat between the two characters, until one's
     HP hits 0.
 
     Args:
-        c1: The first character to attack.
-        c2: The second character to attack.
+        attacker: The first character to attack.
+        defender: The second character to attack.
     """
-    while c1.cur_hp > 0 or c2.cur_hp > 0:
-        logging.info(f"{c1.name} attacks!")
-        c1, c2 = attack(c1, c2)
-        logging.info(f"{c2.cur_hp = }")
-        logging.info(f"{c2.name} attacks!")
-        c2, c1 = attack(c2, c1)
-        logging.info(f"{c1.cur_hp = }")
+    while attacker.cur_hp > 0 and defender.cur_hp > 0:
+        attacker, defender = combat(attacker=attacker, defender=defender)
+        yield attacker, defender
+    return attacker, defender

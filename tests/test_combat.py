@@ -1,3 +1,5 @@
+# TODO: clean these tests up;
+# much of the setup is repeated and the assertions are brittle and basic
 import pytest
 
 import engine.combat
@@ -7,6 +9,10 @@ from engine.types import Character, Weapon
 
 def always_hit(attacker: Character, defender: Character) -> bool:
     return True
+
+
+def never_crit(*args) -> bool:
+    return 1
 
 
 @pytest.fixture
@@ -55,6 +61,33 @@ def test_attack(sword_unit, axe_unit, monkeypatch):
         attacker=sword_unit, defender=axe_unit
     )
     assert axe_unit.cur_hp < axe_unit.max_hp
+
+
+def test_combat(sword_unit, axe_unit, monkeypatch):
+    """Basic test of combat function:
+    Force both attacks to always hit, and assert that both participants
+    have lost HP.
+    """
+    monkeypatch.setattr(engine.combat, "attack_hits", always_hit)
+    sword_unit, axe_unit = engine.combat.combat(
+        attacker=sword_unit, defender=axe_unit,
+    )
+    # sanity check on parameter ordering
+    assert sword_unit.name == 'Eliwood'
+    assert axe_unit.name == 'Hector'
+    assert axe_unit.cur_hp < axe_unit.max_hp
+    assert sword_unit.cur_hp < sword_unit.max_hp
+
+
+def test_arena(sword_unit, axe_unit, monkeypatch):
+    monkeypatch.setattr(engine.combat, "attack_hits", always_hit)
+    gi = engine.combat.arena(attacker=sword_unit, defender=axe_unit)
+    sword_unit, axe_unit = next(gi)
+    # sanity check on parameter ordering
+    assert sword_unit.name == 'Eliwood'
+    assert axe_unit.name == 'Hector'
+    assert axe_unit.cur_hp < axe_unit.max_hp
+    assert sword_unit.cur_hp < sword_unit.max_hp
 
 
 def test_forecast(sword_unit, axe_unit):
