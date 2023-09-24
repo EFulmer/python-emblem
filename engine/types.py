@@ -1,4 +1,4 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 
 
 @dataclass(frozen=True)
@@ -18,9 +18,9 @@ class Character:
 
     con: int
 
-    inventory: list
+    inventory: list = field(default_factory=list)
 
-    skills: list
+    skills: list = field(default_factory=list)
 
     def __post_init__(self):
         if self.cur_hp > self.max_hp:
