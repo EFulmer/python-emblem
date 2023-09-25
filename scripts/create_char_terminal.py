@@ -17,7 +17,18 @@ def main():
     lck = IntPrompt.ask("Luck")
     con = IntPrompt.ask("Constitution")
 
-    char = Character(name=name, max_hp=hp, cur_hp=hp, pwr=pwr, skl=skl, spd=spd, dfn=dfn, res=res, lck=lck, con=con)
+    char = Character(
+        name=name,
+        max_hp=hp,
+        cur_hp=hp,
+        pwr=pwr,
+        skl=skl,
+        spd=spd,
+        dfn=dfn,
+        res=res,
+        lck=lck,
+        con=con,
+    )
     rich.print(char)
 
     character_to_yaml(character=char, file_name=name)

@@ -91,6 +91,7 @@ def forecast_one(c1: Character, c2: Character) -> Dict:
 
     return c1_summary
 
+
 def combat(attacker: Character, defender: Character) -> (Character, Character):
     """Run a round of combat where attacker initiates and defender
     counters, if possible.

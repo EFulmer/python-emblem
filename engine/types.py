@@ -29,7 +29,7 @@ class Character:
             )
         if self.cur_hp < 0:
             raise ValueError(f"Current HP cannot be less than zero")
-        nonnegative_stats = {'pwr', 'skl', 'spd', 'dfn', 'res', 'lck', 'con'}
+        nonnegative_stats = {"pwr", "skl", "spd", "dfn", "res", "lck", "con"}
         for s in nonnegative_stats:
             if getattr(self, s) < 0:
                 raise ValueError(f"{s} must be >= 0")
