@@ -70,11 +70,12 @@ def test_combat(sword_unit, axe_unit, monkeypatch):
     """
     monkeypatch.setattr(engine.combat, "attack_hits", always_hit)
     sword_unit, axe_unit = engine.combat.combat(
-        attacker=sword_unit, defender=axe_unit,
+        attacker=sword_unit,
+        defender=axe_unit,
     )
     # sanity check on parameter ordering
-    assert sword_unit.name == 'Eliwood'
-    assert axe_unit.name == 'Hector'
+    assert sword_unit.name == "Eliwood"
+    assert axe_unit.name == "Hector"
     assert axe_unit.cur_hp < axe_unit.max_hp
     assert sword_unit.cur_hp < sword_unit.max_hp
 
@@ -84,8 +85,8 @@ def test_arena(sword_unit, axe_unit, monkeypatch):
     gi = engine.combat.arena(attacker=sword_unit, defender=axe_unit)
     sword_unit, axe_unit = next(gi)
     # sanity check on parameter ordering
-    assert sword_unit.name == 'Eliwood'
-    assert axe_unit.name == 'Hector'
+    assert sword_unit.name == "Eliwood"
+    assert axe_unit.name == "Hector"
     assert axe_unit.cur_hp < axe_unit.max_hp
     assert sword_unit.cur_hp < sword_unit.max_hp
 

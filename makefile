@@ -7,7 +7,7 @@ style:
 	flake8
 
 tests:
-	pytest --capture=sys .
+	pytest -vvv --capture=sys .
 
 typecheck:
 	mypy .
