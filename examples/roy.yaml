@@ -1,0 +1,12 @@
+name: 'Roy'
+max_hp: 18
+cur_hp: 18
+pwr: 5
+skl: 5
+spd: 7
+dfn: 5
+res: 0
+lck: 7
+con: 6
+inventory: []
+skills: []
